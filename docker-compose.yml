@@ -11,7 +11,7 @@ services:
     networks:
       - economy-bot
   bot:
-    build: dongsu8142/economy-bot
+    image: dongsu8142/economy-bot:master
     env_file:
       - .env
       - ./DB/.env
