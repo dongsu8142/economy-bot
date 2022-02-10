@@ -14,7 +14,7 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@latest
         with:
-          image: dongsu8142/economy-bot
+          image: dongsu8142/economy-bot@v2.9.0
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: dongsu8142/economy-bot
