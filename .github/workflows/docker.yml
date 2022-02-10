@@ -1,19 +1,21 @@
-name: Docker Image CI
+name: Docker CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Docker login
-      run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag dongsu8142/economy-bot:latest
-    - name: Docker push
-      run: docker push dongsu8142/economy-bot:latest
+      - uses: actions/checkout@v2
+      - name: Build and push Docker images
+        uses: docker/build-push-action@latest
+        with:
+          image: dongsu8142/economy-bot
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: dongsu8142/economy-bot
+          tags: latest, ${{ github.run_number }}
