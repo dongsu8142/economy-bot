@@ -1,0 +1,13 @@
+FROM node:17.4.0-alpine
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN apk add g++ make python3
+
+RUN yarn
+
+COPY . .
+
+CMD [ "yarn", "dev" ]
