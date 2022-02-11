@@ -6,9 +6,7 @@ export default {
     .setName("도움말")
     .setDescription("도움말을 보여줍니다."),
   async execute(client, interaction, embed) {
-    const helpEmbed = embed
-      .setTitle("도움말")
-      .setDescription("문의는 한동준#0551에게 연락해주세요.");
+    const helpEmbed = embed.setTitle("도움말");
     client.commands.map((command) => {
       helpEmbed.addField(command.data.name, command.data.description, true);
     });
