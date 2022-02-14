@@ -1,12 +1,12 @@
 import { RESTPostAPIApplicationCommandsJSONBody } from "discord-api-types";
 import { Player } from "discord-player";
 import { Collection } from "discord.js";
-import { KoreanbotsClient, KoreanbotsClientOptions } from "koreanbots";
+import { KoreanbotsClient } from "koreanbots";
+import { KoreanbotsClientOptions } from "koreanbots/dist/src/utils/types";
 import { getRepository, Repository } from "typeorm";
 import CryptoWS from "../utils/cryptoWS";
 import { Economy } from "../utils/entities/economy";
 import { CommandType } from "../utils/types";
-
 export default class DiscordClient extends KoreanbotsClient {
   private _commands = new Collection<string, CommandType>();
   private _handleEvents = async (eventFiles: string[]) => {};
