@@ -11,11 +11,12 @@ export default {
       .sort((a, b) => b.money - a.money)
       .slice(0, 10);
     const description = (
-      await users.map(
-        async (user, index) =>
-          `${index + 1}. ${await getUserName(client, user.userId)} - ${
+      await Promise.all(
+        users.map((user, index) => {
+          return `${index + 1}. ${getUserName(client, user.userId)} - ${
             user.money
-          }`
+          }`;
+        })
       )
     ).join("\n");
     interaction.reply({
