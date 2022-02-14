@@ -10,14 +10,14 @@ export default {
     const users = (await client.economyRepository.find())
       .sort((a, b) => b.money - a.money)
       .slice(0, 10);
-    const description = await users
-      .map(
+    const description = (
+      await users.map(
         async (user, index) =>
           `${index + 1}. ${await getUserName(client, user.userId)} - ${
             user.money
           }`
       )
-      .join("\n");
+    ).join("\n");
     interaction.reply({
       embeds: [embed.setTitle("순위").setDescription(description)],
     });
