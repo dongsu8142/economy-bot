@@ -1,12 +1,13 @@
 import { RESTPostAPIApplicationCommandsJSONBody } from "discord-api-types";
 import { Player } from "discord-player";
-import { Client, ClientOptions, Collection } from "discord.js";
+import { Collection } from "discord.js";
+import { KoreanbotsClient, KoreanbotsClientOptions } from "koreanbots";
 import { getRepository, Repository } from "typeorm";
 import CryptoWS from "../utils/cryptoWS";
 import { Economy } from "../utils/entities/economy";
-import { CommandType, CryptoType } from "../utils/types";
+import { CommandType } from "../utils/types";
 
-export default class DiscordClient extends Client {
+export default class DiscordClient extends KoreanbotsClient {
   private _commands = new Collection<string, CommandType>();
   private _handleEvents = async (eventFiles: string[]) => {};
   private _handleCommands = async (commandFolers: string[]) => {};
@@ -17,7 +18,7 @@ export default class DiscordClient extends Client {
   private _economyRepository: Repository<Economy> = getRepository(Economy);
   private _crypto: CryptoWS = new CryptoWS();
 
-  constructor(options: ClientOptions) {
+  constructor(options: KoreanbotsClientOptions) {
     super(options);
   }
 

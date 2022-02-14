@@ -33,6 +33,14 @@ const commandFolders = fs.readdirSync(path.join(__dirname, "commands"));
       Intents.FLAGS.GUILD_BANS,
       Intents.FLAGS.GUILD_VOICE_STATES,
     ],
+    koreanbots: {
+      api: {
+        token: process.env.KOREAN_BOTS_TOKEN!,
+      },
+    },
+    koreanbotsClient: {
+      updateInterval: 1000 * 60 * 10,
+    },
   });
   for (const file of functions) {
     (await import(`./functions/${file}`)).default(client);
