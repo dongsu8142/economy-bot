@@ -12,8 +12,8 @@ export default {
       .slice(0, 10);
     const description = (
       await Promise.all(
-        users.map((user, index) => {
-          return `${index + 1}. ${getUserName(client, user.userId)} - ${
+        users.map(async (user, index) => {
+          return `${index + 1}. ${await getUserName(client, user.userId)} - ${
             user.money
           }`;
         })
