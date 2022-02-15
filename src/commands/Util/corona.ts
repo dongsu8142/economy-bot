@@ -24,6 +24,7 @@ export default {
       interaction.reply({
         embeds: [
           embed
+            .setTitle("코로나 정보")
             .addField(
               "확진자",
               `${overview.confirmed[0]}(+${overview.confirmed[1]})`,
