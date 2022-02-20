@@ -32,4 +32,8 @@ export default class LevelSystem {
 
     return users.slice(0, limit);
   }
+
+  xpFor(targetLevel: number) {
+    return targetLevel * targetLevel * 100;
+  }
 }
