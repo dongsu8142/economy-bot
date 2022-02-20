@@ -5,7 +5,9 @@ import { KoreanbotsClient } from "koreanbots";
 import { KoreanbotsClientOptions } from "koreanbots/dist/src/utils/types";
 import { getRepository, Repository } from "typeorm";
 import CryptoWS from "../utils/cryptoWS";
+import EconomySystem from "../utils/economySystem";
 import { User } from "../utils/entities/user";
+import LevelSystem from "../utils/levelSystem";
 import { CommandType } from "../utils/types";
 export default class DiscordClient extends KoreanbotsClient {
   private _commands = new Collection<string, CommandType>();
@@ -17,6 +19,8 @@ export default class DiscordClient extends KoreanbotsClient {
   });
   private _userRepository: Repository<User> = getRepository(User);
   private _crypto: CryptoWS = new CryptoWS();
+  private _economySystem = new EconomySystem(this);
+  private _levelSystem = new LevelSystem(this);
 
   constructor(options: KoreanbotsClientOptions) {
     super(options);
@@ -42,6 +46,12 @@ export default class DiscordClient extends KoreanbotsClient {
   }
   get crypto() {
     return this._crypto;
+  }
+  get economySystem() {
+    return this._economySystem;
+  }
+  get levelSystem() {
+    return this._levelSystem;
   }
 
   set handleEvents(value) {
