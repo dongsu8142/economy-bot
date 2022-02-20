@@ -35,6 +35,7 @@ export default {
       )
       .setProgressBar("#FFA500", "COLOR")
       .setUsername(target.user.username)
+      .setLevel(user.level)
       .setDiscriminator(target.user.discriminator);
     rank.build({}).then((data) => {
       const attachment = new MessageAttachment(data, "card.png");
