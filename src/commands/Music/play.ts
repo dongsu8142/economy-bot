@@ -88,9 +88,19 @@ export default {
         ],
       });
 
-    await queue.play(track);
+    try {
+      await queue.play(track);
+    } catch (err) {
+      return await interaction.followUp({
+        embeds: [
+          embed
+            .setColor("RED")
+            .setDescription("음악을 재생하다가 에러가 발생했습니다."),
+        ],
+      });
+    }
 
-    return await interaction.followUp({
+    await interaction.followUp({
       embeds: [
         embed
           .setTitle(track.title)

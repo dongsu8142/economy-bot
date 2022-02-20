@@ -112,7 +112,7 @@ export default {
     const track = tracks[parseInt(collected?.first()?.content!) - 1];
     try {
       await queue.play(track);
-      return await interaction.followUp({
+      await interaction.followUp({
         embeds: [
           embed
             .setTitle(track.title)
