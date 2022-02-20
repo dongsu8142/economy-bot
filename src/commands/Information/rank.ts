@@ -2,6 +2,7 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 import canvacord from "canvacord";
 import { GuildMember, MessageAttachment } from "discord.js";
 import { CommandType } from "../../utils/types";
+import path from "path";
 
 export default {
   data: new SlashCommandBuilder()
@@ -22,7 +23,12 @@ export default {
       });
     const neededXp = client.levelSystem.xpFor(user.level + 1);
     const rank = new canvacord.Rank()
-      .registerFonts(["sans-serif"])
+      .registerFonts([
+        {
+          path: path.join(__dirname, "../../../assets/NotoSansKR.otf"),
+          face: "Noto Sans KR",
+        },
+      ])
       .setAvatar(target.displayAvatarURL({ dynamic: false, format: "png" }))
       .setCurrentXP(user.xp)
       .setRequiredXP(neededXp)

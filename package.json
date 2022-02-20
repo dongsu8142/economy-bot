@@ -7,8 +7,7 @@
   "scripts": {
     "dev": "nodemon -L src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js",
-    "start:docker": "node index.js"
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "@discord-player/extractor": "^3.0.2",
