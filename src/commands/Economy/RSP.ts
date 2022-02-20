@@ -25,7 +25,7 @@ export default {
     try {
       const kind = interaction.options.getString("종류", true);
       const bet = interaction.options.getNumber("액수", true);
-      let user = await client.economyRepository.findOne({
+      let user = await client.userRepository.findOne({
         userId: interaction.user.id,
       });
       if (!user) {
@@ -80,7 +80,7 @@ export default {
       let total = user.money;
       if (description === "이겼습니다.") {
         total += bet;
-        await client.economyRepository.update(
+        await client.userRepository.update(
           { userId: interaction.user.id },
           {
             money: total,
@@ -88,7 +88,7 @@ export default {
         );
       } else if (description === "졌습니다.") {
         total -= bet;
-        await client.economyRepository.update(
+        await client.userRepository.update(
           { userId: interaction.user.id },
           {
             money: total,

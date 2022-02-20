@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryColumn } from "typeorm";
 
-@Entity({ name: "guild_bans" })
-export class Economy {
+@Entity({ name: "users" })
+export class User {
   @PrimaryColumn({ unique: true, name: "user_id" })
   userId: string;
 
@@ -34,4 +34,7 @@ export class Economy {
 
   @Column({ name: "WAVES", default: 0, nullable: false })
   WAVES: number;
+
+  @Column({ name: "xp", default: 0, nullable: false })
+  xp: number;
 }

@@ -7,7 +7,7 @@ export default {
     .setName("순위")
     .setDescription("1위부터 10위까지의 순위를 보여줍니다."),
   async execute(client, interaction, embed) {
-    const users = (await client.economyRepository.find())
+    const users = (await client.userRepository.find())
       .sort((a, b) => b.money - a.money)
       .slice(0, 10);
     const description = (

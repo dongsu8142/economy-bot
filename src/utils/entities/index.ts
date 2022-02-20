@@ -1,3 +1,3 @@
-import { Economy } from "./economy";
+import { User } from "./user";
 
-export const entities = [Economy];
+export const entities = [User];

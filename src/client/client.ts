@@ -5,7 +5,7 @@ import { KoreanbotsClient } from "koreanbots";
 import { KoreanbotsClientOptions } from "koreanbots/dist/src/utils/types";
 import { getRepository, Repository } from "typeorm";
 import CryptoWS from "../utils/cryptoWS";
-import { Economy } from "../utils/entities/economy";
+import { User } from "../utils/entities/user";
 import { CommandType } from "../utils/types";
 export default class DiscordClient extends KoreanbotsClient {
   private _commands = new Collection<string, CommandType>();
@@ -15,7 +15,7 @@ export default class DiscordClient extends KoreanbotsClient {
   private _player: Player = new Player(this, {
     ytdlOptions: { filter: "audioonly", quality: "highestaudio" },
   });
-  private _economyRepository: Repository<Economy> = getRepository(Economy);
+  private _userRepository: Repository<User> = getRepository(User);
   private _crypto: CryptoWS = new CryptoWS();
 
   constructor(options: KoreanbotsClientOptions) {
@@ -34,8 +34,8 @@ export default class DiscordClient extends KoreanbotsClient {
   get commandArray() {
     return this._commandArray;
   }
-  get economyRepository() {
-    return this._economyRepository;
+  get userRepository() {
+    return this._userRepository;
   }
   get player() {
     return this._player;

@@ -8,7 +8,7 @@ export default {
   async execute(client, interaction, embed) {
     try {
       const { user } = interaction;
-      const userEconomy = await client.economyRepository.findOne({
+      const userEconomy = await client.userRepository.findOne({
         userId: user.id,
       });
       if (userEconomy) {
@@ -20,10 +20,10 @@ export default {
           ],
         });
       } else {
-        const newMoney = await client.economyRepository.create({
+        const newMoney = await client.userRepository.create({
           userId: user.id,
         });
-        await client.economyRepository.save(newMoney);
+        await client.userRepository.save(newMoney);
         await interaction.reply({
           embeds: [embed.setDescription("가입이 완료되었습니다.")],
         });

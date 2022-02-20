@@ -9,7 +9,7 @@ export default {
   async execute(client, interaction, embed) {
     try {
       const { user } = interaction;
-      const userEconomy = await client.economyRepository.findOne({
+      const userEconomy = await client.userRepository.findOne({
         userId: user.id,
       });
       if (userEconomy) {

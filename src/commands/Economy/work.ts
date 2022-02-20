@@ -17,7 +17,7 @@ export default {
       });
     }
     const { user } = interaction;
-    const userEconomy = await client.economyRepository.findOne({
+    const userEconomy = await client.userRepository.findOne({
       userId: user.id,
     });
     if (!userEconomy)
@@ -31,7 +31,7 @@ export default {
         ],
       });
     const addMoney = Math.floor(Math.random() * 1000) + 1000;
-    const updateUserMoney = await client.economyRepository.update(
+    const updateUserMoney = await client.userRepository.update(
       { userId: userEconomy.userId },
       { money: userEconomy.money + addMoney }
     );

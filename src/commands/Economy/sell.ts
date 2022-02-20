@@ -26,7 +26,7 @@ export default {
     try {
       const kind = interaction.options.getString("종류", true);
       const price = client.crypto[kind];
-      const user = await client.economyRepository.findOne({
+      const user = await client.userRepository.findOne({
         userId: interaction.user.id,
       });
       if (user) {
@@ -35,7 +35,7 @@ export default {
         if (user[kind] >= count) {
           user[kind] -= count;
           user["money"] += total;
-          const newUser = await client.economyRepository.save(user);
+          const newUser = await client.userRepository.save(user);
           await interaction.reply({
             embeds: [
               embed
