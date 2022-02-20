@@ -22,6 +22,7 @@ export default {
       });
     const neededXp = client.levelSystem.xpFor(user.level + 1);
     const rank = new canvacord.Rank()
+      .registerFonts(["sans-serif"])
       .setAvatar(target.displayAvatarURL({ dynamic: false, format: "png" }))
       .setCurrentXP(user.xp)
       .setRequiredXP(neededXp)
