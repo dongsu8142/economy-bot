@@ -1,4 +1,4 @@
-FROM node:17.4.0-alpine AS builder
+FROM node:17.5.0-alpine AS builder
 
 WORKDIR /app
 COPY package.json .
@@ -7,7 +7,7 @@ RUN yarn
 COPY . .
 RUN yarn build
 
-FROM node:17.4.0-alpine
+FROM node:17.5.0-alpine
 WORKDIR /app
 RUN apk add g++ make python3
 COPY --from=builder /app/dist /app
