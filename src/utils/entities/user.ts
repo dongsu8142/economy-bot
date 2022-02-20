@@ -37,4 +37,7 @@ export class User {
 
   @Column({ name: "xp", default: 0, nullable: false })
   xp: number;
+
+  @Column({ name: "level", default: 0, nullable: false })
+  level: number;
 }
