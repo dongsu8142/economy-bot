@@ -2,7 +2,7 @@ FROM node:17.5.0-alpine AS base
 
 WORKDIR /app
 
-RUN apk add g++ make python3
+RUN apk add --no-cache g++ make python3 jpeg-dev cairo-dev giflib-dev pango-dev
 
 FROM base AS builder
 
