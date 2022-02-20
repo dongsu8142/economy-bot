@@ -39,7 +39,7 @@ export default {
       .setDiscriminator(target.user.discriminator);
     rank.build({}).then((data) => {
       const attachment = new MessageAttachment(data, "card.png");
-      interaction.reply({ attachments: [attachment] });
+      interaction.reply({ files: [attachment] });
     });
   },
 } as CommandType;
