@@ -2,7 +2,7 @@ FROM node:17.5.0-alpine AS base
 
 WORKDIR /app
 
-RUN apk add g++ make python
+RUN apk add g++ make python3
 
 FROM base AS builder
 
