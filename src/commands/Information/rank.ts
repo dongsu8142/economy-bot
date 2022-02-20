@@ -26,7 +26,7 @@ export default {
       .registerFonts([
         {
           path: path.join(__dirname, "../../../assets/NotoSansKR.otf"),
-          face: "Noto Sans KR",
+          face: { family: "Noto Sans KR" },
         },
       ])
       .setAvatar(target.displayAvatarURL({ dynamic: false, format: "png" }))
