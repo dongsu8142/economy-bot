@@ -57,8 +57,8 @@ export default {
 } as CommandType;
 
 function getRank(value: User, arr: User[]): number | null {
-  var sorted = arr.slice().sort((a, b) => b.xp - a.xp);
-  var rank = sorted.indexOf(value);
+  const sorted = arr.sort((a, b) => b.xp - a.xp);
+  const rank = sorted.indexOf(value);
   if (rank > -1) return rank + 1;
   return null;
 }
