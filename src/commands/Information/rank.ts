@@ -24,7 +24,8 @@ export default {
         ],
       });
     const neededXp = client.levelSystem.xpFor(user.level + 1);
-    const rank = new canvacord.Rank()
+    const rank = getRank(user, users);
+    const rankimg = new canvacord.Rank()
       .registerFonts([
         {
           path: path.join(__dirname, "../../../assets/NotoSansKR.otf"),
@@ -45,10 +46,10 @@ export default {
       .setProgressBar("#FFA500", "COLOR")
       .setUsername(target.user.username)
       .setLevel(user.level)
-      .setRank(getRank(user, users) || 0)
+      .setRank(rank ? rank : 0)
       .setBackground("COLOR", target.displayHexColor)
       .setDiscriminator(target.user.discriminator);
-    rank.build({}).then((data) => {
+    rankimg.build({}).then((data) => {
       const attachment = new MessageAttachment(data, "card.png");
       interaction.reply({ files: [attachment] });
     });
@@ -56,9 +57,7 @@ export default {
 } as CommandType;
 
 function getRank(value: User, arr: User[]): number | null {
-  var sorted = arr.slice().sort(function (a, b) {
-    return b.xp - a.xp;
-  });
+  var sorted = arr.slice().sort((a, b) => b.xp - a.xp);
   var rank = sorted.indexOf(value);
   if (rank > -1) return rank + 1;
   return null;
