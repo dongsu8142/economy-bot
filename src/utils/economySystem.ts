@@ -52,4 +52,8 @@ export default class EconomySystem {
       return { user: newUser, price, total };
     }
   }
+
+  async delete(user: User) {
+    return this._client.userRepository.delete(user);
+  }
 }
