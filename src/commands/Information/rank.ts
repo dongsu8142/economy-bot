@@ -3,6 +3,7 @@ import canvacord from "canvacord";
 import { GuildMember, MessageAttachment } from "discord.js";
 import { CommandType } from "../../utils/types";
 import path from "path";
+import { User } from "../../utils/entities/user";
 
 export default {
   data: new SlashCommandBuilder()
@@ -11,6 +12,7 @@ export default {
   async execute(client, interaction, embed) {
     const target = interaction.member as GuildMember;
     const user = await client.levelSystem.fetch(target.id);
+    const users = await client.levelSystem.fetchAll();
     if (!user)
       return interaction.reply({
         embeds: [
@@ -43,6 +45,7 @@ export default {
       .setProgressBar("#FFA500", "COLOR")
       .setUsername(target.user.username)
       .setLevel(user.level)
+      .setRank(getRank(user, users) || 0)
       .setBackground("COLOR", target.displayHexColor)
       .setDiscriminator(target.user.discriminator);
     rank.build({}).then((data) => {
@@ -51,3 +54,12 @@ export default {
     });
   },
 } as CommandType;
+
+function getRank(value: User, arr: User[]): number | null {
+  var sorted = arr.slice().sort(function (a, b) {
+    return b.xp - a.xp;
+  });
+  var rank = sorted.indexOf(value);
+  if (rank > -1) return rank + 1;
+  return null;
+}
