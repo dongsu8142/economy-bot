@@ -1,4 +1,5 @@
 import DiscordClient from "../client/client";
+import { User } from "./entities/user";
 
 export default class EconomySystem {
   private _client: DiscordClient;
@@ -8,7 +9,7 @@ export default class EconomySystem {
   }
 
   async setMoney(userId: string, money: number) {
-    await this._client.userRepository.update({ userId }, { money });
+    return this._client.userRepository.update({ userId }, { money });
   }
 
   async fetch(userId: string) {
@@ -23,5 +24,32 @@ export default class EconomySystem {
     const users = (await this.fetchAll()).sort((a, b) => b.money - a.money);
 
     return users.slice(0, limit);
+  }
+
+  async buy(user: User, kind: string, count: number) {
+    const price = this._client.crypto[kind];
+    const total = price * count;
+    if (user.money >= total) {
+      user[kind] += count;
+      user["money"] -= total;
+      const newUser = await this._client.userRepository.save(user);
+      return { user: newUser, price, total };
+    }
+  }
+
+  async create(userId: string) {
+    const newMoney = await this._client.userRepository.create({ userId });
+    return this._client.userRepository.save(newMoney);
+  }
+
+  async sell(user: User, kind: string, count: number) {
+    const price = this._client.crypto[kind];
+    const total = price * count;
+    if (user[kind] >= count) {
+      user[kind] -= count;
+      user["money"] += total;
+      const newUser = await this._client.userRepository.save(user);
+      return { user: newUser, price, total };
+    }
   }
 }

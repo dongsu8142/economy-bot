@@ -24,24 +24,18 @@ export default {
     ),
   async execute(client, interaction, embed) {
     try {
-      const kind = interaction.options.getString("종류", true);
-      const price = client.crypto[kind];
-      const user = await client.userRepository.findOne({
-        userId: interaction.user.id,
-      });
+      const user = await client.economySystem.fetch(interaction.user.id);
       if (user) {
+        const kind = interaction.options.getString("종류", true);
         const count = interaction.options.getNumber("개수", true);
-        const total = price * count;
-        if (user[kind] >= count) {
-          user[kind] -= count;
-          user["money"] += total;
-          const newUser = await client.userRepository.save(user);
+        const sell = await client.economySystem.sell(user, kind, count);
+        if (sell) {
           await interaction.reply({
             embeds: [
               embed
                 .setTitle("구매 완료")
                 .setDescription(
-                  `${kind}을(를) ${count}개 판매했습니다.\n개당 가격은 ${price}입니다.\n총 판매 가격은 ${total}원입니다.\n잔액은 ${newUser.money}원입니다.`
+                  `${kind}을(를) ${count}개 판매했습니다.\n개당 가격은 ${sell.price}입니다.\n총 판매 가격은 ${sell.total}원입니다.\n잔액은 ${sell.user.money}원입니다.`
                 ),
             ],
           });

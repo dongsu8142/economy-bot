@@ -9,9 +9,7 @@ export default {
   async execute(client, interaction, embed) {
     try {
       const { user } = interaction;
-      const userEconomy = await client.userRepository.findOne({
-        userId: user.id,
-      });
+      const userEconomy = await client.economySystem.fetch(user.id);
       if (userEconomy) {
         const newEmbed = embed
           .setTitle(`${user.username}님의 자산`)

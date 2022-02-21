@@ -16,11 +16,8 @@ export default {
         ],
       });
     }
-    const { user } = interaction;
-    const userEconomy = await client.userRepository.findOne({
-      userId: user.id,
-    });
-    if (!userEconomy)
+    const user = await client.economySystem.fetch(interaction.user.id);
+    if (!user)
       return interaction.reply({
         embeds: [
           embed
@@ -31,9 +28,10 @@ export default {
         ],
       });
     const addMoney = Math.floor(Math.random() * 1000) + 1000;
-    const updateUserMoney = await client.userRepository.update(
-      { userId: userEconomy.userId },
-      { money: userEconomy.money + addMoney }
+    const total = user.money + addMoney;
+    const updateUserMoney = await client.economySystem.setMoney(
+      user.userId,
+      total
     );
     if (!updateUserMoney) {
       return interaction.reply("오류가 발생했습니다.");
@@ -42,9 +40,7 @@ export default {
       embeds: [
         embed
           .setTitle(`일을 헤서 ${addMoney}원을 벌었습니다.`)
-          .setDescription(
-            `현재 돈은 ${userEconomy.money + addMoney}원 입니다.`
-          ),
+          .setDescription(`현재 돈은 ${total}원 입니다.`),
       ],
     });
     cooldown.add(interaction.user.id);
