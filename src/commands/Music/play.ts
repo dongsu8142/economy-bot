@@ -3,6 +3,7 @@ import { GuildMember } from "discord.js";
 import { CommandType } from "../../utils/types";
 import playdl from "play-dl";
 import internal from "stream";
+import { Track } from "discord-player";
 
 export default {
   data: new SlashCommandBuilder()
@@ -76,19 +77,19 @@ export default {
 
     await interaction.deferReply();
 
-    const track = await client.player
-      .search(query, {
-        requestedBy: interaction.user,
-      })
-      .then((x) => x.tracks[0]);
-    if (!track)
-      return await interaction.followUp({
-        embeds: [
-          embed.setColor("RED").setDescription("노래를 찾을 수 없습니다."),
-        ],
-      });
-
+    let track: Track;
     try {
+      track = await client.player
+        .search(query, {
+          requestedBy: interaction.user,
+        })
+        .then((x) => x.tracks[0]);
+      if (!track)
+        return await interaction.followUp({
+          embeds: [
+            embed.setColor("RED").setDescription("노래를 찾을 수 없습니다."),
+          ],
+        });
       await queue.play(track);
     } catch (err) {
       return await interaction.followUp({
