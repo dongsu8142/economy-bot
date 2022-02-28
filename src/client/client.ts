@@ -1,8 +1,7 @@
 import { RESTPostAPIApplicationCommandsJSONBody } from "discord-api-types";
 import { Player } from "discord-player";
 import { Collection } from "discord.js";
-import { KoreanbotsClient } from "koreanbots";
-import { KoreanbotsClientOptions } from "koreanbots/dist/src/utils/types";
+import { KoreanbotsClient, KoreanbotsClientOptions } from "koreanbots";
 import { getRepository, Repository } from "typeorm";
 import CryptoWS from "../utils/cryptoWS";
 import EconomySystem from "../utils/economySystem";

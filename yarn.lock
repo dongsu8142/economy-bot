@@ -168,7 +168,7 @@
     "@types/node" "*"
     form-data "^2.3.3"
 
-"@types/node@*", "@types/node@^17.0.18":
+"@types/node@*":
   version "17.0.18"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.18.tgz#3b4fed5cfb58010e3a2be4b6e74615e4847f1074"
   integrity sha512-eKj4f/BsN/qcculZiRSujogjvp5O/k4lOW5m35NopjZM/QwLOR075a8pJW5hD+Rtdm2DaCVPENS6KtSQnUD6BA==
@@ -177,6 +177,11 @@
   version "10.17.60"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.60.tgz#35f3d6213daed95da7f0f73e75bcc6980e90597b"
   integrity sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==
+
+"@types/node@^17.0.21":
+  version "17.0.21"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.21.tgz#864b987c0c68d07b4345845c3e63b75edd143644"
+  integrity sha512-DBZCJbhII3r90XbQxI8Y9IjjiiOGlZ0Hr32omXIZvwwZ7p4DMMXGrKXVyPfuoBOri9XNtL0UK69jYIBIsRX3QQ==
 
 "@types/responselike@*", "@types/responselike@^1.0.0":
   version "1.0.0"
@@ -1150,10 +1155,10 @@ keyv@^4.0.0:
   dependencies:
     json-buffer "3.0.1"
 
-koreanbots@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/koreanbots/-/koreanbots-3.2.0.tgz#655816eab5df313aa82dee18b5a6daa6616c2f43"
-  integrity sha512-Y2+CXxf6vLQYG1dMFia+wIrBv5LHO2sL8Mq2bA/qIRLTr9uuvmNmn+PmjXxnW/7ydTghyj9a8MaoBUEW9dO9Ow==
+koreanbots@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/koreanbots/-/koreanbots-3.2.1.tgz#9b7cddfec5a7f51e6d30dab03a9032f16c107c9a"
+  integrity sha512-BmHNrhiUv/DO66K3fRtY0tmbVaqfi86bt8p7Sa+nde0jxxUjDYYGpOQ44G17r5+s0ZP6S7M8KzutNDKmG78liw==
   dependencies:
     discord.js ">=13"
     undici "^4.7.0"
@@ -1478,10 +1483,10 @@ play-audio@^0.5.2:
   resolved "https://registry.yarnpkg.com/play-audio/-/play-audio-0.5.2.tgz#191dd45b95ff64ae20bbd718671da4e987d4edd1"
   integrity sha512-ZAqHUKkQLix2Iga7pPbsf1LpUoBjcpwU93F1l3qBIfxYddQLhxS6GKmS0d3jV8kSVaUbr6NnOEcEMFvuX93SWQ==
 
-play-dl@^1.8.8:
-  version "1.8.8"
-  resolved "https://registry.yarnpkg.com/play-dl/-/play-dl-1.8.8.tgz#ac39a0b30c8728ec7915e3f4e9c349ebd56cfabf"
-  integrity sha512-MK1njgYgHHTq9g4pkRd1Siz/LE7pbmgivkXycC1Zpl4psEsPtxq44Atl3fv2MeuISdx/hE7S0H8Oz4l0ZgwhHw==
+play-dl@^1.8.9:
+  version "1.8.9"
+  resolved "https://registry.yarnpkg.com/play-dl/-/play-dl-1.8.9.tgz#c65ff6fc37f2eab264f7c0b445ac373a0c558171"
+  integrity sha512-mIdge+xH7x9ji2+gVFPZl34K+iSvb0sx+N7yYCIGX/OEsGoH84uHj8tCR5Jvy+VETPjY165cjAZnfzHmFPN9DQ==
   dependencies:
     play-audio "^0.5.2"
 
@@ -1929,10 +1934,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typeorm@^0.2.43:
-  version "0.2.43"
-  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.43.tgz#110d629ed5d0b014c735f0213f06b34abb32d298"
-  integrity sha512-j4SU8I0PsMWtF64s/9tOJmlexzfDsvXhTjSE2GXdSseUN8TYyfbCm/fJnC6lx3uHgBJL4z9bE8U/7qyC/FVmNw==
+typeorm@^0.2.44:
+  version "0.2.44"
+  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.44.tgz#4cc07eb1eb7a0e7f3ec9e65ded9eb3c3aedbb3e1"
+  integrity sha512-yFyb9Ts73vGaS/O06TvLpzvT5U/ngO31GeciNc0eoH7P1QcG8kVZdOy9FHJqkTeDmIljMRgWjbYUoMw53ZY7Xw==
   dependencies:
     "@sqltools/formatter" "^1.2.2"
     app-root-path "^3.0.0"
